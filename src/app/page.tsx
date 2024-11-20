@@ -4,7 +4,6 @@ import Footer from '@/components/Footer/Footer';
 import ProductFeatureOverview from '@/components/ProductFeatureOverview/ProductFeatureOverview';
 import TrustedBy from '@/components/TrustedBy/TrustedBy';
 import WorldFirstPlatf from '@/components/WorldFirstPlatf/WorldFirstPlatf';
-import Image from 'next/image';
 
 export default function Home() {
   return (

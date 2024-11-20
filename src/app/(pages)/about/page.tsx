@@ -2,8 +2,17 @@ import Footer from '@/components/Footer/Footer';
 import React from 'react';
 import Image from 'next/image';
 
+interface TeamMemberProps {
+  imageSrc: string;
+  name: string;
+  title: string;
+  isAdvisor?: boolean;
+  isHighlighted?: boolean;
+  customIconColor?: boolean;
+}
+
 // Reusable Component for Team Member with Highlight Support
-const TeamMember = ({
+const TeamMember: React.FC<TeamMemberProps> = ({
   imageSrc,
   name,
   title,
@@ -73,7 +82,7 @@ const TeamMember = ({
   </div>
 );
 
-const AboutPage = () => {
+const AboutPage: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* Top Header */}
@@ -81,7 +90,7 @@ const AboutPage = () => {
         <div className="w-full flex items-start justify-start ml-10 mt-16 ">
           <div className="w-2/4 flex items-center">
             <span className="font-monument text-white uppercase tracking-widest">
-              the World's first AI
+              the World&rsquo;s first AI
               <br /> fintech platform and
               <br /> marketplace for music
             </span>
@@ -93,7 +102,6 @@ const AboutPage = () => {
             alt={'Intro Top'}
             height={1983}
             width={2731}
-            layout="responsive"
           />
         </div>
       </div>
@@ -102,12 +110,12 @@ const AboutPage = () => {
       <div className="w-full items-center justify-center flex flex-col -mt-56">
         <div className="w-2/4">
           <span className="flex text-center font-monument text-white text-2xl">
-            Black Lion is the world’s first AI-powered fintech platform and
-            marketplace designed for the music and entertainment industry. We
-            provide real-time data insights and innovative private equity-style
-            valuation tools, empowering artists, songwriters, producers,
-            engineers, investors, managers, and labels to understand and unlock
-            the true financial value of music.
+            Black Lion is the world&rsquo;s first AI-powered fintech platform
+            and marketplace designed for the music and entertainment industry.
+            We provide real-time data insights and innovative private
+            equity-style valuation tools, empowering artists, songwriters,
+            producers, engineers, investors, managers, and labels to understand
+            and unlock the true financial value of music.
           </span>
         </div>
 
@@ -148,7 +156,7 @@ const AboutPage = () => {
                 isHighlighted: true,
               },
             ].map((member, index) => (
-              <TeamMember key={index} {...member} />
+              <TeamMember key={`executive-${index}`} {...member} />
             ))}
           </div>
         </div>
@@ -169,7 +177,7 @@ const AboutPage = () => {
                 customIconColor: true,
               },
             ].map((member, index) => (
-              <TeamMember key={index} {...member} />
+              <TeamMember key={`executive-2-${index}`} {...member} />
             ))}
           </div>
         </div>
@@ -227,7 +235,7 @@ const AboutPage = () => {
                 isAdvisor: true,
               },
             ].map((advisor, index) => (
-              <TeamMember key={index} {...advisor} />
+              <TeamMember key={`advisor-${index}`} {...advisor} />
             ))}
           </div>
         </div>
