@@ -106,6 +106,19 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
               Blog
             </Link>
           </li>
+
+          <li>
+            <Link
+              href="/news"
+              className={`block py-2 px-2 md:px-3 lg:px-4 rounded ${
+                isActive('/news')
+                  ? 'text-red-500 underline'
+                  : 'hover:text-red-500'
+              }`}
+            >
+              News
+            </Link>
+          </li>
           <li>
             <Link
               href="/contact"
@@ -207,6 +220,19 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
                 onClick={closeMenu}
               >
                 Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/news"
+                className={`block py-2 px-4 rounded ${
+                  isActive('/news')
+                    ? 'text-red-500 underline'
+                    : 'hover:text-red-500'
+                }`}
+                onClick={closeMenu}
+              >
+                News
               </Link>
             </li>
             <li>

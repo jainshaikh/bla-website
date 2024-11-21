@@ -163,7 +163,7 @@ const AboutPage = () => {
 
         {/* Alisha and Toro */}
         <div className="w-full items-center justify-center flex mt-10">
-          <div className="flex-row w-full items-center justify-center flex gap-10 flex-wrap lg:gap-16">
+          <div className="flex-row w-full items-center justify-center flex  flex-wrap lg:gap-16">
             {/* Manny Toro's Profile */}
             <div className="w-full lg:w-1/6 h-auto border-4 border-white p-2 items-center justify-start rounded-2xl flex flex-col">
               <Image

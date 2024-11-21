@@ -15,6 +15,8 @@ const config: Config = {
         colors: {
           'custom-red': '#CE4641',
           'custom-bg-color': '#121B28',
+          'custom-secondary-btn-bg-color': '#4FFCB7',
+          'custom-secondary-btn-text-color': '#121B28',
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
