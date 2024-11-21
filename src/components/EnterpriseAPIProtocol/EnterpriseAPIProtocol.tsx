@@ -41,20 +41,32 @@ const EnterpriseAPIProtocol = () => {
   const renderPricingCard = (card: (typeof pricingData)[0], index: number) => (
     <div
       key={index}
-      className="bg-colors-custom-bg-color hover:bg-red-500 rounded-lg p-5 relative group"
-      style={{ width: '370px', height: '507px' }}
+      className="bg-colors-custom-bg-color hover:bg-red-500 rounded-lg p-5 relative group w-[370px] h-[507px]
+      sm:w-[280px] sm:h-[450px]"
     >
       <div className="flex items-start flex-col justify-start h-full">
         {/* Price Section */}
         <div className="group flex items-center gap-3">
-          <span className="font-sans text-5xl font-bold text-colors-custom-red group-hover:text-white transition-colors">
+          <span
+            className="font-sans text-5xl font-bold text-colors-custom-red group-hover:text-white transition-colors
+          sm:text-2xl"
+          >
             {card.monthlyPrice}
+          </span>
+          <span
+            className="text-white transition-colors font-sans text-sm uppercase
+          sm:text-xs"
+          >
+            Per Month
           </span>
         </div>
 
         {/* Title */}
-        <div className="m-3 mt-3">
-          <span className="text-white font-sans font-extrabold text-2xl">
+        <div className="mt-3">
+          <span
+            className="text-white font-sans font-extrabold text-2xl uppercase
+          sm:text-base"
+          >
             {card.title}
           </span>
         </div>
@@ -66,10 +78,16 @@ const EnterpriseAPIProtocol = () => {
 
         {/* Annual Price */}
         <div className="flex items-center gap-3 mt-5">
-          <span className="text-white font-sans font-extrabold text-2xl">
+          <span
+            className="text-white font-sans font-extrabold text-2xl
+          sm:text-2xl"
+          >
             {card.annualPrice}
           </span>
-          <span className="text-white font-sans font-medium text-sm">
+          <span
+            className="text-white font-sans font-medium text-sm
+          sm:text-xs"
+          >
             {card.annually}
           </span>
         </div>
@@ -78,15 +96,27 @@ const EnterpriseAPIProtocol = () => {
         {card.features.map((feature, featureIndex) => (
           <div
             key={featureIndex}
-            className="flex flex-row items-center gap-2 mt-5"
+            className="flex flex-row items-center gap-2 mt-5
+            sm:mt-2 sm:gap-1"
           >
             <Image
               src="/assets/svgs/PointSvg.svg"
               alt=""
               height={28}
               width={28}
+              className="hidden 2xl:flex"
             />
-            <span className="text-white text-xl font-sans font-medium">
+            <Image
+              src="/assets/svgs/PointSvg.svg"
+              alt=""
+              height={28}
+              width={28}
+              className="hidden sm:flex"
+            />
+            <span
+              className="text-white text-xl font-sans font-medium
+            sm:text-base sm:font-light"
+            >
               {feature}
             </span>
           </div>
@@ -94,21 +124,32 @@ const EnterpriseAPIProtocol = () => {
       </div>
 
       {/* Hover Image */}
-      <div className="absolute -top-8 -right-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 group-hover:z-50">
+      <div
+        className="absolute -top-8 -right-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 group-hover:z-50
+      sm:-top-6 sm:-right-6"
+      >
         <Image
           src="/assets/svgs/CardHoverImg.svg"
           alt="Hover Image"
           width={150}
           height={150}
+          className="hidden 2xl:flex"
+        />
+        <Image
+          src="/assets/svgs/CardHoverImg.svg"
+          alt="Hover Image"
+          width={90}
+          height={90}
+          className="hidden sm:flex"
         />
       </div>
     </div>
   );
 
   return (
-    <>
+    <div className="border-4 border-solid border-white pt-10">
       {/*Top Bar*/}
-      <div className="w-full overflow-hidden flex flex-col items-center">
+      <div className="w-full overflow-hidden flex flex-col items-center ">
         <Image
           src="/assets/svgs/unlockingValueStrip.svg"
           alt="Svg Logo"
@@ -119,54 +160,84 @@ const EnterpriseAPIProtocol = () => {
       </div>
 
       {/* Top Section */}
-      <div className="w-full flex 2xl:flex-row sm:flex-col">
-        <div className="flex flex-col w-3/4 ">
-          <span className="font-monument text-2xl font-normal ml-20 mt-20 text-white">
+      <div
+        className="w-full flex flex-col items-center justify-center
+      sm:mt-10"
+      >
+        <div className="w-full">
+          <span
+            className="font-monument text-2xl font-normal ml-10 mt-20 text-white
+          sm:text-sm	"
+          >
             Integrate With Ease through our...
           </span>
 
-          <div className=" ml-10 ">
+          <div className="sm:w-full ">
             <div className="flex flex-row items-center">
-              <div className="">
-                <Image
-                  src="/assets/svgs/crossIcon.svg"
-                  alt={''}
-                  width={200}
-                  height={200}
-                />
-              </div>
+              <Image
+                src="/assets/svgs/crossIcon.svg"
+                alt={''}
+                width={200}
+                height={200}
+              />
 
-              <span className="font-monument text-white text-4xl mr-40 leading-normal">
+              <span
+                className="font-monument text-white text-4xl mr-40 leading-normal text-center
+              sm:text-2xl	"
+              >
                 Enterprise API Protocol
               </span>
             </div>
           </div>
-
-          <span className="font-monument text-2xl font-normal ml-20 mt-10 mr-20 text-white">
-            Unlock real-time financial revenue based scalable insights into
-            artist, producer, songwriter and composer performance depicting the
-            360 view of a media asset with Black Lions Enterprise API Protocol.
-          </span>
-          <br />
-          <span className="font-monument text-2xl font-normal ml-20 mr-20 text-white">
-            Designed to seamlessly integrate comprehensive data from streaming
-            and social media platforms, enabling dynamic analytics, estimations,
-            valuations and integration while minimising API limitations.
-          </span>
         </div>
-        <div className="w-2/4">
-          <Image
-            src="/assets/svgs/LionwithBachground.svg"
-            alt={''}
-            height={1103}
-            width={1109}
-          />
+
+        <div
+          className="w-full flex items-center flex-row justify-between
+        sm:flex-col "
+        >
+          <div
+            className="flex flex-col w-2/4
+          sm:w-full"
+          >
+            <span
+              className="font-monument text-2xl font-normal ml-10 mt-10  text-white uppercase
+            sm:text-base sm:mr-28	"
+            >
+              Unlock real-time financial revenue-based scalable insights into
+              artist, producer, songwriter, and composer performance depicting
+              the 360 view of a media asset with Black Lions Enterprise API
+              Protocol.
+            </span>
+            <br />
+            <span
+              className="font-monument text-2xl font-normal ml-10  text-white
+             sm:text-base sm:mr-28"
+            >
+              Designed to seamlessly integrate comprehensive data from streaming
+              and social media platforms, enabling dynamic analytics,
+              estimations, valuations, and integration while minimizing API
+              limitations.
+            </span>
+          </div>
+
+          <div className="flex-col w-2/4 hidden 2xl:flex">
+            <Image
+              src="/assets/svgs/LionwithBachground.svg"
+              alt={''}
+              height={1103}
+              width={1109}
+              // className="item"
+            />
+          </div>
         </div>
       </div>
 
       {/* Data Points Section */}
       <div className="w-full flex flex-col items-center justify-center px-10">
-        <div className="w-full flex flex-row items-center justify-between">
+        <div
+          className="w-full flex flex-row items-center justify-between
+        sm:flex-col"
+        >
           <div className="w-full flex items-center justify-center">
             <Image
               src="/assets/svgs/Watch.svg"
@@ -177,10 +248,16 @@ const EnterpriseAPIProtocol = () => {
           </div>
 
           <div className="w-full flex flex-col items-center justify-start">
-            <span className="font-monument text-white text-4xl mb-10">
+            <span
+              className="font-monument text-white text-4xl mb-10
+            sm:text-2xl	"
+            >
               Data Points
             </span>
-            <div className="flex flex-row gap-2">
+            <div
+              className="flex flex-row gap-2
+            sm:flex-col"
+            >
               <div>
                 {datapoints.map((datapoint) => (
                   <div
@@ -214,9 +291,15 @@ const EnterpriseAPIProtocol = () => {
       </div>
 
       {/* Partnership Chartmetric Section */}
-      <div className="w-full flex flex-row items-center justify-between px-20 mt-10">
+      <div
+        className="w-full flex flex-row items-center justify-between px-10 mt-10
+      sm:flex-col"
+      >
         <div className="w-full flex items-center justify-center">
-          <span className="font-monument text-white text-4xl mb-10">
+          <span
+            className="font-monument text-white text-4xl mb-10
+          sm:text-2xl	"
+          >
             In Partnership with Chartmetric Inc.
           </span>
         </div>
@@ -235,14 +318,14 @@ const EnterpriseAPIProtocol = () => {
       <div className="w-full flex flex-col items-center justify-center mt-10">
         <span className="font-monument text-white text-4xl">Pricing</span>
         <div
-          className="flex items-center justify-center gap-10 mt-10
-          2xl:flex-row 
-          sm:flex-col"
+          className="flex items-center justify-center gap-10 mt-10 flex-wrap 
+          xl:flex-row xl:justify-start 
+          sm:grid sm:grid-cols-2 sm:gap-4 "
         >
           {pricingData.map(renderPricingCard)}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -4,8 +4,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -74,23 +72,32 @@ const ProductFeatureOverview = () => {
   const renderPricingCard = (card: (typeof pricingData)[0], index: number) => (
     <div
       key={index}
-      className="bg-colors-custom-bg-color hover:bg-red-500 rounded-lg p-5 relative group"
-      style={{ width: '370px', height: '507px' }}
+      className="bg-colors-custom-bg-color hover:bg-red-500 rounded-lg p-5 relative group w-[370px] h-[507px]
+      sm:w-[280px] sm:h-[450px]"
     >
       <div className="flex items-start flex-col justify-start h-full">
         {/* Price Section */}
         <div className="group flex items-center gap-3">
-          <span className="font-sans text-5xl font-bold text-colors-custom-red group-hover:text-white transition-colors">
+          <span
+            className="font-sans text-5xl font-bold text-colors-custom-red group-hover:text-white transition-colors
+          sm:text-2xl"
+          >
             {card.monthlyPrice}
           </span>
-          <span className="text-white transition-colors font-sans text-sm">
+          <span
+            className="text-white transition-colors font-sans text-sm uppercase
+          sm:text-xs"
+          >
             Per Month
           </span>
         </div>
 
         {/* Title */}
-        <div className="m-3 mt-3">
-          <span className="text-white font-sans font-extrabold text-2xl">
+        <div className="mt-3">
+          <span
+            className="text-white font-sans font-extrabold text-2xl uppercase
+          sm:text-base"
+          >
             {card.title}
           </span>
         </div>
@@ -102,10 +109,16 @@ const ProductFeatureOverview = () => {
 
         {/* Annual Price */}
         <div className="flex items-center gap-3 mt-5">
-          <span className="text-white font-sans font-extrabold text-2xl">
+          <span
+            className="text-white font-sans font-extrabold text-2xl
+          sm:text-2xl"
+          >
             {card.annualPrice}
           </span>
-          <span className="text-white font-sans font-medium text-sm">
+          <span
+            className="text-white font-sans font-medium text-sm
+          sm:text-xs"
+          >
             {card.annually}
           </span>
         </div>
@@ -114,15 +127,27 @@ const ProductFeatureOverview = () => {
         {card.features.map((feature, featureIndex) => (
           <div
             key={featureIndex}
-            className="flex flex-row items-center gap-2 mt-5"
+            className="flex flex-row items-center gap-2 mt-5
+            sm:mt-2 sm:gap-1"
           >
             <Image
               src="/assets/svgs/PointSvg.svg"
               alt=""
               height={28}
               width={28}
+              className="hidden 2xl:flex"
             />
-            <span className="text-white text-xl font-sans font-medium">
+            <Image
+              src="/assets/svgs/PointSvg.svg"
+              alt=""
+              height={28}
+              width={28}
+              className="hidden sm:flex"
+            />
+            <span
+              className="text-white text-xl font-sans font-medium
+            sm:text-base sm:font-light"
+            >
               {feature}
             </span>
           </div>
@@ -130,12 +155,23 @@ const ProductFeatureOverview = () => {
       </div>
 
       {/* Hover Image */}
-      <div className="absolute -top-8 -right-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 group-hover:z-50">
+      <div
+        className="absolute -top-8 -right-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 group-hover:z-50
+      sm:-top-6 sm:-right-6"
+      >
         <Image
           src="/assets/svgs/CardHoverImg.svg"
           alt="Hover Image"
           width={150}
           height={150}
+          className="hidden 2xl:flex"
+        />
+        <Image
+          src="/assets/svgs/CardHoverImg.svg"
+          alt="Hover Image"
+          width={90}
+          height={90}
+          className="hidden sm:flex"
         />
       </div>
     </div>
@@ -171,9 +207,9 @@ const ProductFeatureOverview = () => {
   ];
 
   return (
-    <>
+    <div className="border-4 border-solid border-white pt-10">
       {/* Top Section */}
-      <div className="w-full overflow-hidden flex flex-col items-center">
+      <div className="w-full overflow-hidden flex flex-col items-center ">
         <Image
           src="/assets/svgs/unlockingValueStrip.svg"
           alt="Svg Logo"
@@ -201,7 +237,10 @@ const ProductFeatureOverview = () => {
        sm:-mt-28 sm:items-center "
       >
         <div className=" ml-10 ">
-          <div className="flex 2xl:flex-col sm:flex-row items-center justify-center">
+          <div
+            className="flex 2xl:flex-col -reverse items-center justify-center
+          sm:flex-row"
+          >
             <div className="">
               <Image
                 src="/assets/svgs/crossIcon.svg"
@@ -211,11 +250,17 @@ const ProductFeatureOverview = () => {
               />
             </div>
 
-            <span className="font-monument text-white text-4xl">About</span>
+            <span
+              className="font-monument text-white text-4xl 
+            sm:text-2xl"
+            >
+              About
+            </span>
           </div>
         </div>
 
-        <div className="w-full items-center justify-center">
+        {/* {Group Image for Desktop} */}
+        <div className="w-full items-center justify-center sm:hidden 2xl:flex">
           <Image
             src="/assets/svgs/newGroup.svg"
             width={1920}
@@ -225,20 +270,39 @@ const ProductFeatureOverview = () => {
             className="2xl:-mt-28"
           />
         </div>
+
+        {/* {Group Image for Mobiel} */}
+        <div className="w-full items-center justify-center sm:flex 2xl:hidden">
+          <Image
+            src="/assets/svgs/newGroupForMbl.svg"
+            width={618}
+            height={592}
+            layout="responsive"
+            alt={''}
+            className="2xl:-mt-28"
+          />
+        </div>
       </div>
 
       {/* Feature Section */}
       <div className="w-full flex flex-col items-center justify-center mt-10">
-        <span className="font-monument text-white text-4xl mb-10">
+        <span
+          className="font-monument text-white text-4xl mb-10 
+        sm:text-2xl"
+        >
           Features
         </span>
         {features.map((feature) => (
           <div
             key={feature.id}
-            className="w-full flex justify-center flex-row items-center"
+            className="w-full flex justify-center flex-row items-center
+            sm:px-24"
           >
-            <Image src={feature.icon} alt="" height={100} width={120} />
-            <span className="font-monument 2xl:text-2xl text-white text-center sm:text-base">
+            <Image src={feature.icon} alt="Check Icon" height={50} width={60} />
+            <span
+              className="font-monument 2xl:text-2xl text-white text-center 
+            sm:text-base sm:text-center"
+            >
               {feature.text}
             </span>
           </div>
@@ -249,12 +313,9 @@ const ProductFeatureOverview = () => {
       <div className="w-full flex flex-col items-center justify-center mt-10">
         <span className="font-monument text-white text-4xl">Pricing</span>
         <div
-          className="flex items-center justify-center gap-10 mt-10 flex-wrap xl:hidden
-          2xl:flex-row 2xl:flex 
-          xl:flex-row xl:flex-wrap
-          lg:flex-row lg:flex-wrap
-          md:flex-row md:flex-wrap
-          sm:flex-col sm:flex-wrap"
+          className="flex items-center justify-center gap-10 mt-10 flex-wrap 
+          xl:flex-row xl:justify-start 
+          sm:grid sm:grid-cols-2 sm:gap-4 "
         >
           {pricingData.map(renderPricingCard)}
         </div>
@@ -263,27 +324,28 @@ const ProductFeatureOverview = () => {
       {/* What Our Clients say */}
       <div className="w-full flex flex-col items-center justify-center mt-10">
         <div className="">
-          <div className="flex 2xl:flex-col sm:flex-row items-center justify-center">
-            <div className="">
-              <Image
-                src="/assets/svgs/crossIcon.svg"
-                alt={''}
-                width={200}
-                height={200}
-              />
-            </div>
+          <div className="flex flex-col items-center justify-center">
+            <Image
+              src="/assets/svgs/crossIcon.svg"
+              alt={''}
+              width={200}
+              height={200}
+            />
 
-            <span className="font-monument text-white text-4xl">
+            <span
+              className="font-monument text-white text-4xl text-center
+            sm:text-2xl"
+            >
               What Our Clients say
             </span>
           </div>
         </div>
 
-        <Carousel className="w-full max-w-2xl mx-auto">
+        <Carousel className="w-full max-w-2xl mx-auto sm:w-3/4">
           <CarouselContent>
             {testimonials.map((testimonial) => (
               <CarouselItem key={testimonial.id}>
-                <div className="p-4">
+                <div className="sm:p-0">
                   <Card className="bg-colors-custom-red text-white rounded-lg">
                     <CardContent className="p-6 text-center">
                       {/* Profile Picture */}
@@ -300,11 +362,17 @@ const ProductFeatureOverview = () => {
                       </div>
 
                       {/* Name and Role */}
-                      <span className="font-monument text-base font-normal">
+                      <span
+                        className="font-monument text-base font-bold
+                      sm:text-xs	"
+                      >
                         {testimonial.name}
                       </span>
                       <br />
-                      <span className="font-monument text-base font-normal">
+                      <span
+                        className="font-monument text-base font-normal
+                      sm:text-xs"
+                      >
                         {testimonial.role}
                       </span>
 
@@ -316,7 +384,8 @@ const ProductFeatureOverview = () => {
                               key={idx}
                               xmlns="http://www.w3.org/2000/svg"
                               fill="currentColor"
-                              className="w-5 h-5 text-[#4FFCB7]"
+                              className="w-5 h-5 text-[#4FFCB7]
+                              sm:w-4 sm:h-4"
                               viewBox="0 0 24 24"
                             >
                               <path d="M12 .587l3.668 7.568L24 9.432l-6 6.129 1.445 8.697L12 18.896l-7.445 5.362L6 15.561l-6-6.129 8.332-1.277z" />
@@ -327,11 +396,12 @@ const ProductFeatureOverview = () => {
 
                       {/* Quote Text */}
                       <p className="italic text-sm mt-4">
-                        {/* <span className="text-green-400 text-6xl">“</span> */}
-                        <span className="font-monument text-base	">
+                        <span
+                          className="font-monument text-base
+                        sm:text-xs	"
+                        >
                           {testimonial.text}
                         </span>
-                        {/* <span className="text-green-400 text-6xl">”</span> */}
                       </p>
                     </CardContent>
                   </Card>
@@ -339,27 +409,9 @@ const ProductFeatureOverview = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-
-          {/* Custom Navigation Buttons */}
-          <CarouselPrevious>
-            <Image
-              src="/assets/svgs/LeftArrow.svg"
-              alt="Previous"
-              width={40}
-              height={40}
-            />
-          </CarouselPrevious>
-          <CarouselNext>
-            <Image
-              src="/assets/svgs/RightArrow.svg"
-              alt="Next"
-              width={40}
-              height={40}
-            />
-          </CarouselNext>
         </Carousel>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -38,9 +38,9 @@ const WeInviteYou = () => {
   }
 
   return (
-    <>
+    <div className="border-4 border-solid border-white pt-10">
       {/*Top Bar*/}
-      <div className="w-full overflow-hidden flex flex-col items-center mt-10">
+      <div className="w-full overflow-hidden flex flex-col items-center">
         <Image
           src="/assets/svgs/unlockingValueStrip.svg"
           alt="Svg Logo"
@@ -49,9 +49,16 @@ const WeInviteYou = () => {
           height={50}
         />
       </div>
+
       {/* Top Section */}
-      <div className="w-full h-screen flex 2xl:flex-row sm:flex-col">
-        <div className="flex flex-col w-3/4 items-center justify-start ">
+      <div
+        className="w-full flex 2xl:flex-row 
+      sm:flex-col-reverse"
+      >
+        <div
+          className="flex flex-col w-3/4 items-center justify-start 
+        sm:-mt-40"
+        >
           <div className="w-full flex flex-col items-start">
             <Image
               src="/assets/svgs/crossIcon.svg"
@@ -60,13 +67,22 @@ const WeInviteYou = () => {
               height={200}
             />
 
-            <span className="font-monument text-white text-2xl leading-normal ml-10">
+            <span
+              className="font-monument text-white text-2xl leading-normal ml-10
+            sm:text-base"
+            >
               WE INVITE YOU TO
             </span>
           </div>
 
-          <div className="w-full ml-20 mt-16">
-            <span className="font-monument text-4xl font-normal text-white">
+          <div
+            className="w-full ml-20 mt-16
+          sm:mt-0 sm:ml-20 "
+          >
+            <span
+              className="font-monument text-4xl font-normal text-white
+            sm:text-2xl"
+            >
               JOIN THE
               <br /> <span className="text-colors-custom-red">ROAR</span>
               volution
@@ -77,7 +93,8 @@ const WeInviteYou = () => {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="w-2/3 space-y-16"
+                className="w-2/3 space-y-16
+                sm:w-full"
               >
                 <FormField
                   control={form.control}
@@ -108,16 +125,20 @@ const WeInviteYou = () => {
           </div>
         </div>
 
-        <div className="w-2/4">
+        <div
+          className="w-2/4 flex items-end justify-end
+        sm:w-full"
+        >
           <Image
             src="/assets/svgs/LionOnTree.svg"
             alt={''}
             height={1103}
             width={1109}
+            className="sm:w-2/4 sm:items-end sm:justify-end"
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
