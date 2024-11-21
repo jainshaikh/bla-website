@@ -25,7 +25,7 @@ const FormSchema = z.object({
     .nonempty({ message: 'Email address is required.' }),
 });
 
-const page = () => {
+const Page = () => {
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -378,4 +378,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
