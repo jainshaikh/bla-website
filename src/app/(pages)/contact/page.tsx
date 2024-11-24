@@ -63,41 +63,44 @@ const Page = () => {
     },
   ];
 
+  // Reusable pricing card component
   const renderPricingCard = (card: (typeof selectPlan)[0], index: number) => (
     <div
       key={index}
-      className="bg-colors-custom-bg-color hover:bg-red-500 rounded-lg p-5 relative group"
-      style={{ width: '370px', height: '507px' }}
+      className="bg-colors-custom-bg-color hover:bg-red-500 rounded-lg p-5 relative group w-[370px] h-[507px]
+      sm:w-[250px] sm:h-[350px]"
     >
       <div className="flex items-start flex-col justify-start h-full">
-        {/* Price Section */}
         <div className="group flex items-center gap-3">
-          <span className="font-sans text-5xl font-bold text-colors-custom-red group-hover:text-white transition-colors">
+          <span
+            className="font-sans text-5xl font-bold text-colors-custom-red group-hover:text-white transition-colors
+          sm:text-2xl"
+          >
             {card.monthlyPrice}
           </span>
-          <span className="text-white transition-colors font-sans text-sm">
+          <span
+            className="text-white transition-colors font-sans text-sm uppercase
+          sm:text-xs"
+          >
             Per Month
           </span>
         </div>
-
-        {/* Title */}
-        <div className="m-3 mt-3">
-          <span className="text-white font-sans font-extrabold text-2xl">
+        <div className="mt-3">
+          <span
+            className="text-white font-sans font-extrabold text-2xl uppercase
+          sm:text-base"
+          >
             {card.title}
           </span>
         </div>
-
-        {/* Separator */}
         <div className="w-full">
           <hr className="border-t-2 border-[#CE4641] group-hover:border-white transition-colors duration-300" />
         </div>
-
-        {/* Annual Price */}
         <div className="flex items-center gap-3 mt-5">
-          <span className="text-white font-sans font-extrabold text-2xl">
+          <span className="text-white font-sans font-extrabold text-2xl sm:text-2xl">
             {card.annualPrice}
           </span>
-          <span className="text-white font-sans font-medium text-sm">
+          <span className="text-white font-sans font-medium text-sm sm:text-xs">
             {card.annually}
           </span>
         </div>
@@ -106,28 +109,46 @@ const Page = () => {
         {card.features.map((feature, featureIndex) => (
           <div
             key={featureIndex}
-            className="flex flex-row items-center gap-2 mt-5"
+            className="flex flex-row items-center gap-2 mt-5 sm:mt-2 sm:gap-1"
           >
             <Image
               src="/assets/svgs/PointSvg.svg"
-              alt=""
+              alt="Feature Icon"
               height={28}
               width={28}
+              className="hidden xl:flex"
             />
-            <span className="text-white text-xl font-sans font-medium">
+            <Image
+              src="/assets/svgs/PointSvg.svg"
+              alt="Feature Icon"
+              height={28}
+              width={28}
+              className="hidden sm:flex"
+            />
+            <span className="text-white text-xl font-sans font-medium sm:text-base sm:font-light">
               {feature}
             </span>
           </div>
         ))}
       </div>
 
-      {/* Hover Image */}
-      <div className="absolute -top-8 -right-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 group-hover:z-50">
+      <div
+        className="absolute -top-8 -right-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 group-hover:z-50
+      sm:-top-6 sm:-right-6"
+      >
         <Image
           src="/assets/svgs/CardHoverImg.svg"
           alt="Hover Image"
           width={150}
           height={150}
+          className="hidden xl:flex"
+        />
+        <Image
+          src="/assets/svgs/CardHoverImg.svg"
+          alt="Hover Image"
+          width={90}
+          height={90}
+          className="hidden sm:flex"
         />
       </div>
     </div>
@@ -135,244 +156,183 @@ const Page = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full">
-        <div className="w-full ml-20 mt-20">
-          <span className="font-monument text-white text-2xl">Contact</span>
-        </div>
+      <main className="flex flex-col items-center justify-center w-full overflow-hidden">
+        {/* Page Header */}
+        <header className="w-full xl:flex ml-20 mt-20 sm:hidden">
+          <h1 className="font-monument text-white text-2xl">Contact</h1>
+        </header>
 
         <Image
-          src={'/assets/svgs/ContactsTopSvg.svg'}
-          alt={''}
+          src="/assets/svgs/ContactsTopSvg.svg"
+          alt="Contact Page Top Image"
           width={2526}
           height={979}
           className="mt-10"
         />
 
-        <div className="w-full ml-20 -mt-96">
-          <div className="w-full flex flex-col items-start">
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="w-3/3 space-y-16"
-              >
-                <FormField
-                  control={form.control}
-                  name="fullName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <Label
-                        htmlFor="name"
-                        className="font-monument text-white tracking-wider"
-                      >
-                        Full Name
-                      </Label>
-                      <FormControl>
-                        <Input
-                          type="fullName"
-                          {...field}
-                          className="font-monument tracking-wider text-white text-2xl capitalize bg-transparent h-14 rounded-2xl w-2/3"
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <Label
-                        htmlFor="email"
-                        className="font-monument text-white tracking-wider"
-                      >
-                        Email Address
-                      </Label>
-                      <FormControl>
-                        <Input
-                          type="email"
-                          {...field}
-                          className="font-monument tracking-wider text-white text-2xl lowercase bg-transparent h-14 rounded-2xl w-2/3"
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
+        <section className="w-full ml-20 xl:-mt-96 mt-16 px-10">
+          {/* Form Section */}
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="w-full space-y-16"
+            >
+              <FormField
+                control={form.control}
+                name="fullName"
+                render={({ field }) => (
+                  <FormItem>
+                    <Label
+                      htmlFor="name"
+                      className="font-monument text-white tracking-wider"
+                    >
+                      Full Name
+                    </Label>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        {...field}
+                        className="font-monument tracking-wider text-white text-2xl capitalize bg-transparent h-14 rounded-2xl w-full md:w-2/3"
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <Label
+                      htmlFor="email"
+                      className="font-monument text-white tracking-wider"
+                    >
+                      Email Address
+                    </Label>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        {...field}
+                        className="font-monument tracking-wider text-white text-2xl lowercase bg-transparent h-14 rounded-2xl w-full md:w-2/3"
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
 
-                <div className="w-full flex flex-col items-start mt-10">
-                  <div className="w-full flex mb-8">
-                    <span className="font-monument text-white text-2xl">
-                      Choose Our Product
-                    </span>
-                  </div>
+              {/* Product Tabs Section */}
+              <section className="w-full mt-10">
+                <h2 className="font-monument text-white text-2xl mb-8">
+                  Choose Our Product
+                </h2>
+                <Tabs defaultValue="mobileApplication" className="w-full">
+                  <TabsList className="mb-6">
+                    <TabsTrigger value="aiValuationEngine">
+                      Ai Valuation Engine
+                    </TabsTrigger>
+                    <TabsTrigger value="apiProtocol">API Protocol</TabsTrigger>
+                    <TabsTrigger value="mobileApplication">
+                      Mobile Application
+                    </TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="mobileApplication">
+                    <div className="w-full flex flex-col">
+                      <span className="font-monument text-white text-2xl capitalize mb-6">
+                        Select Type
+                      </span>
 
-                  <Tabs
-                    defaultValue="mobileApplication"
-                    className="w-full flex items-start justify-center flex-col"
-                  >
-                    <TabsList>
-                      <TabsTrigger value="aiValuationEngine">
-                        Ai Valuation Engine
-                      </TabsTrigger>
-                      <TabsTrigger value="apiProtocol">
-                        API Protocol
-                      </TabsTrigger>
-                      <TabsTrigger value="mobileApplication">
-                        Mobile Application
-                      </TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="aiValuationEngine">
-                      Make changes to your account here.
-                    </TabsContent>
-                    <TabsContent value="apiProtocol">
-                      Change your password here.
-                    </TabsContent>
-                    <TabsContent value="mobileApplication">
-                      <div className="w-full flex flex-col items-start ">
-                        <span className="font-monument text-white text-2xl capitalize mt-10">
-                          select Type
-                        </span>
-
-                        <div className="flex items-center mt-10 gap-10">
-                          <div className="flex items-center gap-3">
-                            <Checkbox id="terms" />
+                      {/* Checkbox Group */}
+                      <div className="flex items-center mt-4 gap-10 flex-wrap">
+                        {[
+                          'Artists',
+                          'Engineers',
+                          'Producers',
+                          'Songwriters',
+                        ].map((type, index) => (
+                          <div className="flex items-center gap-3" key={index}>
+                            <Checkbox id={`terms-${index}`} />
                             <label
-                              htmlFor="terms"
-                              className="text-white tracking-widest	 font-monument text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                              htmlFor={`terms-${index}`}
+                              className="text-white tracking-widest font-monument xl:text-sm sm:text-[12px] font-medium"
                             >
-                              Artists
+                              {type}
                             </label>
                           </div>
+                        ))}
+                      </div>
 
-                          <div className="flex items-center gap-3">
-                            <Checkbox id="terms" />
-                            <label
-                              htmlFor="terms"
-                              className="text-white tracking-widest	 font-monument text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                            >
-                              Engineers
-                            </label>
-                          </div>
-
-                          <div className="flex items-center gap-3">
-                            <Checkbox id="terms" />
-                            <label
-                              htmlFor="terms"
-                              className="text-white tracking-widest	 font-monument text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                            >
-                              Producers
-                            </label>
-                          </div>
-
-                          <div className="flex items-center gap-3">
-                            <Checkbox id="terms" />
-                            <label
-                              htmlFor="terms"
-                              className="text-white tracking-widest	 font-monument text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                            >
-                              Songwriters
-                            </label>
-                          </div>
-                        </div>
-
-                        {/* Select Plan Section */}
-                        <div className='"w-full flex flex-col items-center justify-center'>
-                          <div className="w-full flex flex-row items-center justify-between ">
-                            <div className="w-3/6 flex flex-col items-start justify-center ">
-                              <span className="font-monument text-white text-2xl">
-                                Select Plan
-                              </span>
-                              <div
-                                className="flex items-center justify-center gap-10 mt-10
-          2xl:flex-row 
-          sm:flex-col"
-                              >
-                                {selectPlan.map(renderPricingCard)}
-                              </div>
-                            </div>
-
-                            <div className="w-3/6 flex flex-col items-start justify-start">
-                              <Image
-                                src={'/assets/svgs/MobileViewImg.svg'}
-                                alt={''}
-                                height={836}
-                                width={949}
-                                className="h-full w-full"
-                              />
-                            </div>
-                          </div>
-                        </div>
-
-                        <span className="font-monument text-white text-2xl mt-10 capitalize 2xl:-mt-20">
-                          Checkout VIA
-                        </span>
-
-                        <div className="flex items-center mt-10 gap-10">
-                          <RadioGroup
-                            defaultValue="option-one"
-                            className="flex gap-6"
-                          >
-                            <div className="flex items-center gap-2 ">
-                              <RadioGroupItem value="stripe" id="stripe" />
-                              <Image
-                                src="/assets/logos/StripeIcon.svg"
-                                alt="Paypal"
-                                height={24}
-                                width={24}
-                              />
-
-                              <Label
-                                htmlFor="stripe"
-                                className="font-monument text-white text-base	tracking-widest	"
-                              >
-                                Stripe
-                              </Label>
-                            </div>
-
-                            <div className="flex items-center gap-2 ">
-                              <RadioGroupItem value="paypal" id="paypal" />
-                              <Image
-                                src="/assets/logos/PaypalIcon.svg"
-                                alt="Paypal"
-                                height={24}
-                                width={24}
-                              />
-
-                              <Label
-                                htmlFor="paypal"
-                                className="font-monument text-white text-base	tracking-widest	"
-                              >
-                                PayPal
-                              </Label>
-                            </div>
-
-                            <div className="flex items-center gap-2 ">
-                              <RadioGroupItem value="bank" id="bank" />
-                              <Label
-                                htmlFor="bank"
-                                className="font-monument text-white text-base	tracking-widest	"
-                              >
-                                BANK
-                              </Label>
-                            </div>
-                          </RadioGroup>
+                      {/* Select Plan Section */}
+                      <div className="w-full flex flex-col items-start justify-start mt-10">
+                        <h3 className="font-monument text-white xl:text-2xl sm:text-base mb-4">
+                          Select Plan
+                        </h3>
+                        <div className="flex items-center gap-4 mt-6 flex-wrap">
+                          {selectPlan.map(renderPricingCard)}
                         </div>
                       </div>
-                    </TabsContent>
-                  </Tabs>
-                </div>
 
-                <Button
-                  type="submit"
-                  variant="default"
-                  className="w-2/3 font-monument tracking-wider text-colors-custom-secondary-btn-text-color text-2xl uppercase bg-colors-custom-secondary-btn-bg-color hover:bg-colors-custom-red h-14 rounded-2xl"
-                >
-                  CHECKOUT
-                </Button>
-              </form>
-            </Form>
-          </div>
-        </div>
-      </div>
+                      {/* Checkout Via Section */}
+                      <span className="font-monument text-white text-2xl mt-10 capitalize ">
+                        Checkout VIA
+                      </span>
+
+                      <RadioGroup
+                        defaultValue="option-one"
+                        className="flex gap-6 mt-6"
+                      >
+                        {[
+                          {
+                            value: 'stripe',
+                            label: 'Stripe',
+                            icon: '/assets/logos/StripeIcon.svg',
+                          },
+                          {
+                            value: 'paypal',
+                            label: 'PayPal',
+                            icon: '/assets/logos/PaypalIcon.svg',
+                          },
+                          { value: 'bank', label: 'BANK', icon: null },
+                        ].map((option, index) => (
+                          <div className="flex items-center gap-2" key={index}>
+                            <RadioGroupItem
+                              value={option.value}
+                              id={option.value}
+                            />
+                            {option.icon && (
+                              <Image
+                                src={option.icon}
+                                alt={option.label}
+                                height={24}
+                                width={24}
+                              />
+                            )}
+                            <Label
+                              htmlFor={option.value}
+                              className="font-monument text-white text-base tracking-widest"
+                            >
+                              {option.label}
+                            </Label>
+                          </div>
+                        ))}
+                      </RadioGroup>
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </section>
+
+              <Button
+                type="submit"
+                variant="default"
+                className="w-full md:w-2/3 font-monument tracking-wider text-colors-custom-secondary-btn-text-color text-2xl uppercase bg-colors-custom-secondary-btn-bg-color hover:bg-colors-custom-red h-14 rounded-2xl mt-6"
+              >
+                CHECKOUT
+              </Button>
+            </form>
+          </Form>
+        </section>
+      </main>
+
+      {/* Footer */}
       <Footer />
     </>
   );

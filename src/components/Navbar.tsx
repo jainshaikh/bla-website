@@ -22,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 
   return (
     <nav className="text-white py-4 relative z-50">
-      <div className="max-w-screen-xl mx-auto px-6 flex flex-col items-center md:flex-row md:items-center md:justify-between">
+      <div className="max-w-screen-xl mx-auto px-6 flex flex-col items-center lg:flex-row lg:items-center lg:justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
@@ -35,8 +35,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
           />
         </Link>
 
-        {/* Menu Button for Small Screens */}
-        <div className="md:hidden mt-4">
+        {/* Menu Button for Small and Medium Screens */}
+        <div className="lg:hidden mt-4">
           <button
             onClick={toggleMenu}
             className="text-white hover:text-red-500 focus:outline-none"
@@ -58,13 +58,13 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
           </button>
         </div>
 
-        {/* Large Screen Links */}
-        <ul className="hidden md:flex md:space-x-2 lg:space-x-2 items-center text-lg font-semibold font-monument">
+        {/* Large Screen Links - only visible for lg: and above */}
+        <ul className="hidden lg:flex lg:space-x-2 xl:space-x-2 items-center text-lg font-semibold font-monument">
           <li>
             <Link
               href="/"
-              className={`block py-2 px-2 md:px-3 lg:px-4 rounded  ${
-                isActive('/') ? 'text-red-500 ' : 'hover:text-red-500'
+              className={`block py-2 px-2 lg:px-3 xl:px-4 rounded ${
+                isActive('/') ? 'text-red-500' : 'hover:text-red-500'
               }`}
             >
               Home
@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
           <li>
             <Link
               href="/about"
-              className={`block py-2 px-2 md:px-3 lg:px-4 rounded ${
+              className={`block py-2 px-2 lg:px-3 xl:px-4 rounded ${
                 isActive('/about')
                   ? 'text-red-500 underline'
                   : 'hover:text-red-500'
@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
           <li>
             <Link
               href="/products"
-              className={`block py-2 px-2 md:px-3 lg:px-4 rounded ${
+              className={`block py-2 px-2 lg:px-3 xl:px-4 rounded ${
                 isActive('/products')
                   ? 'text-red-500 underline'
                   : 'hover:text-red-500'
@@ -97,7 +97,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
           <li>
             <Link
               href="/blog"
-              className={`block py-2 px-2 md:px-3 lg:px-4 rounded ${
+              className={`block py-2 px-2 lg:px-3 xl:px-4 rounded ${
                 isActive('/blog')
                   ? 'text-red-500 underline'
                   : 'hover:text-red-500'
@@ -106,11 +106,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
               Blog
             </Link>
           </li>
-
           <li>
             <Link
               href="/news"
-              className={`block py-2 px-2 md:px-3 lg:px-4 rounded ${
+              className={`block py-2 px-2 lg:px-3 xl:px-4 rounded ${
                 isActive('/news')
                   ? 'text-red-500 underline'
                   : 'hover:text-red-500'
@@ -122,7 +121,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
           <li>
             <Link
               href="/contact"
-              className={`block py-2 px-2 md:px-3 lg:px-4 rounded ${
+              className={`block py-2 px-2 lg:px-3 xl:px-4 rounded ${
                 isActive('/contact')
                   ? 'text-red-500 underline'
                   : 'hover:text-red-500'
@@ -134,7 +133,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
         </ul>
       </div>
 
-      {/* Slide-In Menu for Small Screens */}
+      {/* Slide-In Menu for Small and Medium Screens */}
       {menuOpen && (
         <div className="fixed inset-0 bg-blue-900 bg-opacity-90 z-50 flex flex-col items-center justify-center">
           {/* Close Button */}

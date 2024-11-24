@@ -46,9 +46,7 @@ const config: Config = {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
-        margin: {
-          '-650': '-650px',
-        },
+        margin: {},
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -77,6 +75,9 @@ const config: Config = {
         ],
         sans: ['"DM Sans"', 'sans-serif'],
         monument: ['"Monument Extended"', 'sans-serif'],
+      },
+      screens: {
+        xs: '400px',
       },
     },
   },

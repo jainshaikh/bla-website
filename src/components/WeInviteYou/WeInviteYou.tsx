@@ -38,64 +38,56 @@ const WeInviteYou = () => {
   }
 
   return (
-    <div className="border-4 border-solid border-white pt-10">
-      {/*Top Bar*/}
-      <div className="w-full overflow-hidden flex flex-col items-center">
+    <section className="w-full">
+      {/* Top Banner */}
+      <div className="w-full flex justify-center mb-10">
         <Image
           src="/assets/svgs/unlockingValueStrip.svg"
-          alt="Svg Logo"
-          layout="responsive"
+          alt="Unlocking Value Strip"
           width={100}
           height={50}
+          layout="responsive"
+          priority // This banner is critical to the page and should load quickly
         />
       </div>
 
-      {/* Top Section */}
-      <div
-        className="w-full flex 2xl:flex-row 
-      sm:flex-col-reverse"
-      >
+      {/* Invitation Section */}
+      <div className="w-full flex flex-col-reverse lg:flex-row items-start lg:items-center justify-between gap-10">
+        {/* Form Section */}
         <div
-          className="flex flex-col w-3/4 items-center justify-start 
-        sm:-mt-40"
+          className="w-full lg:w-3/5 flex flex-col items-start mb-10 lg:mb-0 
+        sm:px-10 
+        sm:-mt-64 lg:-mt-20 "
         >
-          <div className="w-full flex flex-col items-start">
+          <header className="flex flex-col items-start mb-6">
             <Image
               src="/assets/svgs/crossIcon.svg"
-              alt={''}
-              width={200}
-              height={200}
+              alt="Cross Icon"
+              width={80}
+              height={80}
+              loading="lazy" // Non-critical image, use lazy loading
             />
-
-            <span
-              className="font-monument text-white text-2xl leading-normal ml-10
-            sm:text-base"
-            >
+            <h2 className="font-monument text-white text-2xl leading-normal mt-4 sm:text-base">
               WE INVITE YOU TO
-            </span>
+            </h2>
+          </header>
+
+          {/* Headline Section */}
+          <div className="mb-8">
+            <h3 className="font-monument text-4xl sm:text-3xl font-normal text-white">
+              JOIN THE <br />
+              <span className="text-colors-custom-red">ROAR</span>VOLUTION
+            </h3>
           </div>
 
-          <div
-            className="w-full ml-20 mt-16
-          sm:mt-0 sm:ml-20 "
-          >
-            <span
-              className="font-monument text-4xl font-normal text-white
-            sm:text-2xl"
-            >
-              JOIN THE
-              <br /> <span className="text-colors-custom-red">ROAR</span>
-              volution
-            </span>
-          </div>
-
-          <div className="w-full flex flex-col items-start ml-20 mt-16">
+          {/* Form Section */}
+          <div className="w-full lg:w-3/4">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="w-2/3 space-y-16
-                sm:w-full"
+                className="space-y-6 w-full"
               >
+                {/* Email Input Field */}
                 <FormField
                   control={form.control}
                   name="email"
@@ -106,17 +98,18 @@ const WeInviteYou = () => {
                           type="email"
                           placeholder="Email Address"
                           {...field}
-                          className="font-monument tracking-wider text-2xl uppercase bg-white h-16 rounded-2xl w-full"
+                          className="font-monument tracking-wider text-lg sm:text-base bg-white h-14 rounded-xl w-full px-4"
                         />
                       </FormControl>
                     </FormItem>
                   )}
                 />
 
+                {/* Submit Button */}
                 <Button
                   type="submit"
                   variant="default"
-                  className="font-monument tracking-wider text-2xl uppercase bg-colors-custom-red hover:bg-colors-custom-red h-16 rounded-2xl w-full"
+                  className="font-monument tracking-wider text-lg sm:text-base uppercase bg-colors-custom-red hover:bg-red-600 h-14 rounded-xl w-full"
                 >
                   Get Updates
                 </Button>
@@ -125,20 +118,19 @@ const WeInviteYou = () => {
           </div>
         </div>
 
-        <div
-          className="w-2/4 flex items-end justify-end
-        sm:w-full"
-        >
+        {/* Image Section */}
+        <div className="w-full lg:w-2/5 flex justify-end lg:mb-0">
           <Image
             src="/assets/svgs/LionOnTree.svg"
-            alt={''}
-            height={1103}
-            width={1109}
-            className="sm:w-2/4 sm:items-end sm:justify-end"
+            alt="Lion On Tree Image"
+            loading="lazy"
+            width={400}
+            height={400}
+            className="sm:-mt-10"
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
