@@ -44,9 +44,9 @@ const WeInviteYou = () => {
         <Image
           src="/assets/svgs/unlockingValueStrip.svg"
           alt="Unlocking Value Strip"
-          width={100}
+          width={3000}
           height={50}
-          priority // This banner is critical to the page and should load quickly
+          priority
         />
       </div>
 

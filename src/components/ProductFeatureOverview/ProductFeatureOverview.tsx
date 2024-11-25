@@ -159,9 +159,8 @@ const ProductFeatureOverview = () => {
         <Image
           src="/assets/svgs/unlockingValueStrip.svg"
           alt="Unlocking Value Strip"
-          width={100}
+          width={3000}
           height={50}
-          className="overflow-hidden"
         />
         <div className="w-full flex justify-center -z-10 relative">
           <div

@@ -36,7 +36,6 @@ const TrustedBy = () => {
           Trusted By
         </h2>
       </div>
-
       {/* Trusted By Logos */}
       <div className="w-full flex items-center justify-evenly flex-wrap sm:flex-col md:flex-col lg:flex-row">
         {companies.map((company) => (
@@ -62,19 +61,19 @@ const TrustedBy = () => {
       {/* Features and Claw Image Section */}
       <div className="w-full flex items-center justify-between mt-16 lg:flex-row flex-col-reverse sm:mt-8">
         {/* Features for Enterprises */}
-        <div className="w-full lg:w-1/2 flex flex-col items-start px-4 mb-8 lg:mb-0">
-          <h3 className="font-monument text-white text-4xl uppercase tracking-widest mb-6 sm:text-2xl">
+        <div className="w-full lg:w-1/2 flex flex-col items-start px-4 mb-8 lg:mb-0 lg:ml-10">
+          <h3 className="font-monument text-white text-4xl uppercase tracking-widest mb-6 sm:text-2xl lg:text-3xl">
             For Enterprises
           </h3>
           {features.map((feature) => (
-            <div key={feature.id} className="flex items-center mb-4 sm:mb-2">
+            <div key={feature.id} className="flex items-center mb-4 sm:mb-7">
               <Image
                 src={feature.icon}
                 alt={`${feature.text} Icon`}
-                height={30}
-                width={30}
+                height={60}
+                width={60}
               />
-              <span className="font-monument text-2xl text-white ml-4 uppercase tracking-widest sm:text-base">
+              <span className="font-monument text-2xl text-white ml-4 uppercase tracking-widest sm:text-base lg:text-2xl">
                 {feature.text}
               </span>
             </div>
@@ -83,12 +82,16 @@ const TrustedBy = () => {
 
         {/* Decorative Claw Image */}
         <div className="w-full lg:w-1/2 flex justify-end items-center mb-8 lg:mb-0 sm:px-0 sm:justify-end">
-          <div className="w-40 h-40 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 flex items-center justify-end sm:-mt-16 lg:mt-0">
+          <div
+            className="flex items-center justify-end sm:-mt-16 lg:mt-0 h-auto
+          2xl:w-[900px]"
+          >
             <Image
               src="/assets/svgs/LeftClaw.svg"
               alt="Decorative Claw Image"
-              height={500}
-              width={500}
+              className="object-contain"
+              height={900}
+              width={900}
             />
           </div>
         </div>
