@@ -2,106 +2,13 @@ import Footer from '@/components/Footer/Footer';
 import React from 'react';
 import Image from 'next/image';
 
-// Types for ProfileCard props
-type ProfileCardProps = {
-  name: string;
-  role: string;
-  imageSrc: string;
-  socialMedia: { iconSrc: string; url: string }[];
-  size: 'large' | 'medium'; // Different sizes for different roles
-  background: 'red' | 'transparent'; // Different background colors
-};
-
-// ProfileCard Component
-const ProfileCard: React.FC<ProfileCardProps> = ({
-  name,
-  role,
-  imageSrc,
-  socialMedia,
-  size,
-  background,
-}) => {
-  // Dynamically set card styles based on size and background props
-  const cardClasses = `
-    flex-shrink-0 p-4 items-center justify-between rounded-2xl flex flex-col
-    ${
-      size === 'large'
-        ? 'w-full lg:w-[30%] h-[600px]'
-        : 'w-full lg:w-[22.5%] h-[500px]'
-    }
-    ${
-      background === 'red'
-        ? 'bg-colors-custom-red'
-        : 'bg-transparent border-4 border-white'
-    }
-  `;
-
-  return (
-    <article className={cardClasses}>
-      <Image
-        src={imageSrc}
-        alt={`${name} Profile Picture`}
-        width={440}
-        height={size === 'large' ? 440 : 380}
-        className="object-cover w-full h-4/6 rounded-2xl"
-      />
-      <h3 className="font-monument text-white text-base text-nowrap text-center uppercase mt-2">
-        {name}
-      </h3>
-      <p className="font-monument text-white text-[10px] text-center uppercase px-5 mt-1">
-        {role}
-      </p>
-      <div className="flex flex-row items-center justify-center gap-5 mt-5 mb-3">
-        {socialMedia.map((social, index) => (
-          <a
-            key={index}
-            href={social.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Link to ${name}'s social media`}
-          >
-            <Image
-              src={social.iconSrc}
-              alt={`${name} Social Media Icon`}
-              height={20}
-              width={20}
-            />
-          </a>
-        ))}
-      </div>
-    </article>
-  );
-};
-
-// Social media links for reuse
-const socialMediaIcons = [
-  {
-    iconSrc: '/assets/logos/MessageIcon.svg',
-    url: 'https://twitter.com/username',
-  },
-  { iconSrc: '/assets/logos/Xicon.svg', url: 'mailto:example@example.com' },
-  {
-    iconSrc: '/assets/logos/LinkedinIcon.svg',
-    url: 'https://linkedin.com/in/username',
-  },
-  {
-    iconSrc: '/assets/logos/InstaIcon.svg',
-    url: 'https://instagram.com/username',
-  },
-];
-
 const AboutPage: React.FC = () => {
   return (
     <main className="overflow-hidden scroll-smooth">
       {/* Top Header Section */}
       <section className="w-full items-center justify-between flex flex-col text-white">
-        <header className="flex flex-col items-start w-full mt-16 px-10">
-          <h2 className="font-monument text-2xl font-bold hidden sm:flex">
-            About
-          </h2>
-          <h1 className="font-monument uppercase tracking-widest text-4xl sm:text-2xl mt-4">
-            The world&apos;s first AI fintech platform and marketplace for music
-          </h1>
+        <header className="flex flex-col items-center w-full px-10 sm:flex md:flex lg:hidden xl:hidden 2xl:hidden">
+          <h2 className="font-monument text-2xl font-bold ">About</h2>
         </header>
         <div className="w-full mt-10">
           <Image
@@ -109,7 +16,6 @@ const AboutPage: React.FC = () => {
             alt="Introduction Top Graphic"
             height={1983}
             width={2731}
-            layout="responsive"
           />
         </div>
       </section>
@@ -141,111 +47,437 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Executive Team Section */}
-      <section className="pt-16 w-full items-center justify-center flex flex-col text-white">
-        <header className="w-full text-center mb-8">
+      <section className="w-full items-center justify-center flex flex-col text-white gap-8">
+        <header className="w-full text-center">
           <h2 className="font-monument text-4xl">Executive Team</h2>
         </header>
-        <div className="flex flex-wrap gap-10 justify-center items-center">
-          <ProfileCard
-            name="Junaid Khan"
-            role="CEO & Founder"
-            imageSrc="/assets/images/JunaidImg.png"
-            socialMedia={socialMediaIcons}
-            size="large"
-            background="red"
-          />
-          <ProfileCard
-            name="Daniya Khan"
-            role="COO & Founder"
-            imageSrc="/assets/images/DaniyalImg.png"
-            socialMedia={socialMediaIcons}
-            size="large"
-            background="red"
-          />
-        </div>
-      </section>
 
-      {/* Additional Team Section */}
-      <section className="pt-16 w-full items-center justify-center flex flex-col text-white mt-10">
-        <div className="flex flex-wrap gap-10 justify-center items-center">
-          <ProfileCard
-            name="Manny Toro"
-            role="Chief Marketing Officer"
-            imageSrc="/assets/images/MannyToroImg.jpg"
-            socialMedia={socialMediaIcons}
-            size="medium"
-            background="transparent"
-          />
-          <ProfileCard
-            name="Alisha Outridge"
-            role="Chief Technology Officer"
-            imageSrc="/assets/images/AlishaOutridgeImg.jpg"
-            socialMedia={socialMediaIcons}
-            size="medium"
-            background="transparent"
-          />
-        </div>
-      </section>
+        {/* {Executive Team Section} */}
+        <div className="w-full flex flex-col items-center justify-center gap-4 lg:flex-row">
+          <div className="sm:w-[60%] md:w-[45%] lg:w-[40%]">
+            <article className="uppercase p-4 bg-colors-custom-red-picture-bg rounded-3xl font-monument">
+              <Image
+                src="/assets/images/JunaidImg.png"
+                alt={`Junaid Khan Picture`}
+                width={440}
+                height={440}
+                className="object-contain w-full h-auto rounded-lg"
+              />
+              <h3 className="text-2xl font-medium uppercase text-center mt-4 xl:text-4xl">
+                Junaid Khan
+              </h3>
+              <p className="text-lg text-center mt-2 font-thin xl:text-2xl">
+                CEO & Founder
+              </p>
+              <div className="flex items-center gap-4 mt-6 w-full justify-center">
+                <Image
+                  src={'/assets/logos/TwitterIcon.svg'}
+                  alt={'TwitterIcon'}
+                  height={40}
+                  width={40}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/MessageIcon.svg'}
+                  alt={'Message Icon'}
+                  height={40}
+                  width={40}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/LinkedinIcon.svg'}
+                  alt={'LinkedinIcon'}
+                  height={40}
+                  width={40}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/InstaIcon.svg'}
+                  alt={'InstaIcon.svg'}
+                  height={40}
+                  width={40}
+                  className="object-cover"
+                />
+              </div>
+            </article>
+          </div>
 
-      {/* Board Advisors Section */}
-      <section className="pt-16 w-full items-center justify-center flex flex-col text-white mt-16">
-        <header className="w-full flex justify-center items-center gap-4 mb-8">
-          <h2 className="font-monument text-4xl">Board Advisors</h2>
-          <Image
-            src="/assets/svgs/crossIcon.svg"
-            alt="Decorative Cross Icon"
-            width={100}
-            height={100}
-          />
-        </header>
-        <div className="flex flex-wrap gap-10 justify-center items-center">
-          <ProfileCard
-            name="Ebonie Ward"
-            role="CEO of 11th and Co."
-            imageSrc="/assets/images/EbonieImg.jpg"
-            socialMedia={socialMediaIcons}
-            size="medium"
-            background="transparent"
-          />
-          <ProfileCard
-            name="Wayne Hampton"
-            role="Chief Business Development Officer & Co-Founder - Create Music Group"
-            imageSrc="/assets/images/WayneImg.jpg"
-            socialMedia={socialMediaIcons}
-            size="medium"
-            background="transparent"
-          />
-          <ProfileCard
-            name="Luke Cooper"
-            role="General Partner of Latimer Ventures"
-            imageSrc="/assets/images/LukeImg.jpg"
-            socialMedia={socialMediaIcons}
-            size="medium"
-            background="transparent"
-          />
-          <ProfileCard
-            name="Che Pope"
-            role="COO of Yeezy / Wrkshp"
-            imageSrc="/assets/images/ChePopeImg.jpg"
-            socialMedia={socialMediaIcons}
-            size="medium"
-            background="transparent"
-          />
+          <div className="sm:w-[60%] md:w-[45%] lg:w-[40%]">
+            <article className="uppercase p-4 bg-colors-custom-red-picture-bg rounded-3xl font-monument">
+              <Image
+                src="/assets/images/DaniyalImg.png"
+                alt={`Daniyal Khan Picture`}
+                width={440}
+                height={440}
+                className="object-contain w-full h-auto rounded-lg"
+              />
+              <h3 className="text-2xl font-medium uppercase text-center mt-4 xl:text-4xl">
+                Daniyal Khan
+              </h3>
+              <p className="text-lg text-center mt-2 font-thin xl:text-2xl">
+                COO & Founder
+              </p>
+              <div className="flex items-center gap-4 mt-6 w-full justify-center">
+                <Image
+                  src={'/assets/logos/TwitterIcon.svg'}
+                  alt={'TwitterIcon'}
+                  height={40}
+                  width={40}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/MessageIcon.svg'}
+                  alt={'Message Icon'}
+                  height={40}
+                  width={40}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/LinkedinIcon.svg'}
+                  alt={'LinkedinIcon'}
+                  height={40}
+                  width={40}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/InstaIcon.svg'}
+                  alt={'InstaIcon.svg'}
+                  height={40}
+                  width={40}
+                  className="object-cover"
+                />
+              </div>
+            </article>
+          </div>
+        </div>
+
+        {/* {Other Team Members} */}
+        <div className="w-full flex flex-col items-center justify-center gap-4 lg:flex-row">
+          <div className="sm:w-[45%] md:w-[35%] lg:w-[35%]">
+            <article className="uppercase p-4 bg-colors-custom-secondary-bg-color rounded-3xl font-monument border-4 border-solid border-white">
+              <Image
+                src="/assets/images/MannyToroImg.jpg"
+                alt={`Alisha Outridge Picture`}
+                width={440}
+                height={440}
+                className="object-contain w-full h-auto rounded-lg"
+              />
+              <h3 className="text-xs font-medium uppercase text-center mt-4 xl:text-2xl">
+                Manny Toro
+              </h3>
+              <p className="text-[8px] text-center mt-2 font-thin xl:text-xs">
+                Chief Marketing Officer
+              </p>
+              <div className="flex items-center gap-4 mt-6 w-full justify-center">
+                <Image
+                  src={'/assets/logos/TwitterIcon.svg'}
+                  alt={'TwitterIcon'}
+                  height={30}
+                  width={30}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/MessageIcon.svg'}
+                  alt={'Message Icon'}
+                  height={30}
+                  width={30}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/LinkedinIcon.svg'}
+                  alt={'LinkedinIcon'}
+                  height={30}
+                  width={30}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/InstaIcon.svg'}
+                  alt={'InstaIcon.svg'}
+                  height={30}
+                  width={30}
+                  className="object-cover"
+                />
+              </div>
+            </article>
+          </div>
+
+          <div className="sm:w-[45%] md:w-[35%] lg:w-[35%]">
+            <article className="uppercase p-4 bg-colors-custom-secondary-bg-color rounded-3xl font-monument border-4 border-solid border-white">
+              <Image
+                src="/assets/images/AlishaOutridgeImg.jpg"
+                alt={`Alisha Outridge Picture`}
+                width={440}
+                height={440}
+                className="object-contain w-full h-auto rounded-lg"
+              />
+              <h3 className="text-xs font-medium uppercase text-center mt-4 xl:text-2xl">
+                Alisha Outridge
+              </h3>
+              <p className="text-[8px] text-center mt-2 font-thin xl:text-xs">
+                Chief Technology Officer
+              </p>
+              <div className="flex items-center gap-4 mt-6 w-full justify-center">
+                <Image
+                  src={'/assets/logos/TwitterIcon.svg'}
+                  alt={'TwitterIcon'}
+                  height={30}
+                  width={30}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/MessageIcon.svg'}
+                  alt={'Message Icon'}
+                  height={30}
+                  width={30}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/LinkedinIcon.svg'}
+                  alt={'LinkedinIcon'}
+                  height={30}
+                  width={30}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/InstaIcon.svg'}
+                  alt={'InstaIcon.svg'}
+                  height={30}
+                  width={30}
+                  className="object-cover"
+                />
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
       {/* Decorative Image Section */}
-      <section className="w-full flex justify-center items-center mt-16">
-        <Image
-          src="/assets/svgs/ClawonLeft.svg"
-          alt="Decorative Claw Image"
-          height={837}
-          width={813}
-        />
+      <section className="w-full flex justify-start items-start">
+        <div className="sm:w-3/6 sm:-mt-24">
+          <Image
+            src="/assets/svgs/ClawonLeft.svg"
+            alt="Decorative Claw Image"
+            height={837}
+            width={813}
+          />
+        </div>
       </section>
 
-      {/* Footer Section */}
-      <Footer />
+      {/* {Board Advisors} */}
+      <section
+        className="w-full flex items-center justify-center flex-col text-white
+      sm:-mt-36 lg:-mt-48 2xl:-mt-72"
+      >
+        <div className="w-full flex items-center justify-center flex-row px-10">
+          <h1 className="font-monument lg:text-4xl sm:text-2xl">
+            Board Advisors
+          </h1>
+          <Image
+            src={'/assets/svgs/crossIcon.svg'}
+            alt={''}
+            height={150}
+            width={150}
+          />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-8 w-full px-10">
+          <div>
+            <article className="uppercase p-4 bg-colors-custom-secondary-bg-color rounded-3xl font-monument border-4 border-solid border-white">
+              <Image
+                src="/assets/images/EbonieImg.jpg"
+                alt={`Alisha Outridge Picture`}
+                width={440}
+                height={440}
+                className="object-contain w-full h-auto rounded-lg"
+              />
+              <h3 className="text-xs font-medium uppercase text-center mt-4 xl:text-xl	">
+                Ebonie Ward
+              </h3>
+              <p className="text-[8px] text-center mt-2 font-thin xl:text-xs tracking-widest">
+                CEO of 11th and Co.
+              </p>
+              <div className="flex items-center gap-4 mt-6 w-full justify-center">
+                <Image
+                  src={'/assets/logos/TwitterIconRed.svg'}
+                  alt={'TwitterIcon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/MessageIconRed.svg'}
+                  alt={'Message Icon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/LinkedinIconRed.svg'}
+                  alt={'LinkedinIcon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/InstaIconRed.svg'}
+                  alt={'InstaIcon.svg'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+              </div>
+            </article>
+          </div>
+
+          <div>
+            <article className="uppercase p-4 bg-colors-custom-secondary-bg-color rounded-3xl font-monument border-4 border-solid border-white">
+              <Image
+                src="/assets/images/WayneImg.jpg"
+                alt={`Wayne Hampton Picture`}
+                width={440}
+                height={440}
+                className="object-contain w-full h-auto rounded-lg"
+              />
+              <h3 className="text-xs font-medium uppercase text-center mt-4 xl:text-xl	">
+                Wayne Hampton
+              </h3>
+              <p className="text-[8px] text-center mt-2 font-thin xl:text-xs tracking-widest">
+                Chief Business Development Officer & Co-Founder - Create Music
+                Group.
+              </p>
+              <div className="flex items-center gap-4 mt-6 w-full justify-center">
+                <Image
+                  src={'/assets/logos/TwitterIconRed.svg'}
+                  alt={'TwitterIcon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/MessageIconRed.svg'}
+                  alt={'Message Icon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/LinkedinIconRed.svg'}
+                  alt={'LinkedinIcon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/InstaIconRed.svg'}
+                  alt={'InstaIcon.svg'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+              </div>
+            </article>
+          </div>
+
+          <div>
+            <article className="uppercase p-4 bg-colors-custom-secondary-bg-color rounded-3xl font-monument border-4 border-solid border-white">
+              <Image
+                src="/assets/images/LukeImg.jpg"
+                alt={`Luke Cooper Picture`}
+                width={440}
+                height={440}
+                className="object-contain w-full h-auto rounded-lg"
+              />
+              <h3 className="text-xs font-medium uppercase text-center mt-4 xl:text-xl	">
+                Luke Cooper
+              </h3>
+              <p className="text-[8px] text-center mt-2 font-thin xl:text-xs tracking-widest">
+                General Partner of Latimer ventures
+              </p>
+              <div className="flex items-center gap-4 mt-6 w-full justify-center">
+                <Image
+                  src={'/assets/logos/TwitterIconRed.svg'}
+                  alt={'TwitterIcon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/MessageIconRed.svg'}
+                  alt={'Message Icon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/LinkedinIconRed.svg'}
+                  alt={'LinkedinIcon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/InstaIconRed.svg'}
+                  alt={'InstaIcon.svg'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+              </div>
+            </article>
+          </div>
+
+          <div>
+            <article className="uppercase p-4 bg-colors-custom-secondary-bg-color rounded-3xl font-monument border-4 border-solid border-white">
+              <Image
+                src="/assets/images/ChePopeImg.jpg"
+                alt={`Che Pope Picture`}
+                width={440}
+                height={440}
+                className="object-contain w-full h-auto rounded-lg"
+              />
+              <h3 className="text-xs font-medium uppercase text-center mt-4 xl:text-xl	">
+                Che Pope
+              </h3>
+              <p className="text-[8px] text-center mt-2 font-thin xl:text-xs tracking-widest">
+                COO of Yeezy / Wrkshp
+              </p>
+              <div className="flex items-center gap-4 mt-6 w-full justify-center">
+                <Image
+                  src={'/assets/logos/TwitterIconRed.svg'}
+                  alt={'TwitterIcon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/MessageIconRed.svg'}
+                  alt={'Message Icon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/LinkedinIconRed.svg'}
+                  alt={'LinkedinIcon'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+                <Image
+                  src={'/assets/logos/InstaIconRed.svg'}
+                  alt={'InstaIcon.svg'}
+                  height={25}
+                  width={25}
+                  className="object-cover"
+                />
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <footer id="footer" className="pt-8">
+        <Footer />
+      </footer>
     </main>
   );
 };

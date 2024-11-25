@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Toaster } from '@/components/ui/toaster';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 // Uncomment and update metadata for better SEO
 // export const metadata = {
@@ -25,7 +26,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className="min-h-screen relative font-sans">
-        <img
+        <Image
           src="/assets/svgs/TopLeftVector.svg"
           alt=""
           height={785}

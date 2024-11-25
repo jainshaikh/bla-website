@@ -30,7 +30,6 @@ const WorldFirstPlatf = () => {
           alt="Introducing Valuation Engine AI"
           height={1103}
           width={2272}
-          layout="responsive"
         />
       </div>
     </section>

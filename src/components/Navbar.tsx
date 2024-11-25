@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
   };
 
   return (
-    <nav className="text-white py-4 relative z-50">
+    <nav className="text-white py-4 relative z-50 bg-transparent">
       <div className="max-w-screen-xl mx-auto px-6 flex flex-col items-center lg:flex-row lg:items-center lg:justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">

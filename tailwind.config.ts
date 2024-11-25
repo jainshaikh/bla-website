@@ -14,9 +14,11 @@ const config: Config = {
         foreground: 'hsl(var(--foreground))',
         colors: {
           'custom-red': '#CE4641',
+          'custom-red-picture-bg': '#E13434',
           'custom-bg-color': '#121B28',
           'custom-secondary-btn-bg-color': '#4FFCB7',
           'custom-secondary-btn-text-color': '#121B28',
+          'custom-secondary-bg-color': '#121B28',
         },
         card: {
           DEFAULT: 'hsl(var(--card))',

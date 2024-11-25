@@ -46,7 +46,6 @@ const WeInviteYou = () => {
           alt="Unlocking Value Strip"
           width={100}
           height={50}
-          layout="responsive"
           priority // This banner is critical to the page and should load quickly
         />
       </div>

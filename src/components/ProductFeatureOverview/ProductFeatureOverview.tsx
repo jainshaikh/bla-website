@@ -159,7 +159,6 @@ const ProductFeatureOverview = () => {
         <Image
           src="/assets/svgs/unlockingValueStrip.svg"
           alt="Unlocking Value Strip"
-          layout="responsive"
           width={100}
           height={50}
           className="overflow-hidden"
@@ -205,7 +204,6 @@ const ProductFeatureOverview = () => {
               src="/assets/svgs/newGroupForMbl.svg"
               width={618}
               height={592}
-              layout="responsive"
               alt="Group Illustration Mobile"
               className="w-full h-auto"
             />
@@ -217,7 +215,6 @@ const ProductFeatureOverview = () => {
               src="/assets/svgs/newGroup.svg"
               width={1920}
               height={600}
-              layout="responsive"
               alt="Group Illustration"
               className="w-full h-auto"
             />

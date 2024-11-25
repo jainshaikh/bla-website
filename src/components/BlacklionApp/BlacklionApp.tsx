@@ -112,7 +112,6 @@ const BlacklionApp = () => {
         <Image
           src="/assets/svgs/unlockingValueStrip.svg"
           alt="Unlocking Value Strip"
-          layout="responsive"
           width={100}
           height={50}
         />

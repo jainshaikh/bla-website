@@ -50,7 +50,6 @@ const TrustedBy = () => {
                 alt={`${company.name} Logo`}
                 width={200}
                 height={200}
-                layout="intrinsic"
               />
             </div>
             <span className="font-monument text-white mt-4 flex-nowrap">
@@ -90,7 +89,6 @@ const TrustedBy = () => {
               alt="Decorative Claw Image"
               height={500}
               width={500}
-              layout="intrinsic"
             />
           </div>
         </div>
